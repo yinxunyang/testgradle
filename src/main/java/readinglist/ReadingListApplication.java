@@ -12,7 +12,7 @@ public class ReadingListApplication extends WebMvcConfigurerAdapter {
         SpringApplication.run(ReadingListApplication.class, args);
     }
     //那么通过下面的配置，不用添加LoginController或者处理“readingList”的方法
-    // 就可以直接通过“http://localhost:8080/readingList”访问到readingList.html页面了！
+    // 就可以直接通过“http://localhost:8080/”重定向访问“http://localhost:8080/readingList”！
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addRedirectViewController("/", "/readingList");
