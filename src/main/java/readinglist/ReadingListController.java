@@ -18,7 +18,6 @@ public class ReadingListController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String readersBooks(Model model) {
-
         List<Book> readingList = readingListRepository.findByReader(reader);
         if (readingList != null) {
             model.addAttribute("books", readingList);
@@ -30,6 +29,7 @@ public class ReadingListController {
     public String addToReadingList(Book book) {
         book.setReader(reader);
         readingListRepository.save(book);
+        // 重定向到查询
         return "redirect:/readingList";
     }
 
