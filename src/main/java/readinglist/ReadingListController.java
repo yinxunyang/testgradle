@@ -12,30 +12,25 @@ import java.util.List;
 @RequestMapping("/readingList")
 public class ReadingListController {
 
-  private static final String reader = "craig";
-  
-	private ReadingListRepository readingListRepository;
+    private static final String reader = "craig";
+    @Autowired
+    private ReadingListRepository readingListRepository;
 
-	@Autowired
-	public ReadingListController(ReadingListRepository readingListRepository) {
-		this.readingListRepository = readingListRepository;
-	}
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public String readersBooks(Model model) {
-		
-		List<Book> readingList = readingListRepository.findByReader(reader);
-		if (readingList != null) {
-			model.addAttribute("books", readingList);
-		}
-		return "readingList";
-	}
-	
-	@RequestMapping(method=RequestMethod.POST)
-	public String addToReadingList(Book book) {
-		book.setReader(reader);
-		readingListRepository.save(book);
-		return "redirect:/readingList";
-	}
-	
+    @RequestMapping(method = RequestMethod.GET)
+    public String readersBooks(Model model) {
+
+        List<Book> readingList = readingListRepository.findByReader(reader);
+        if (readingList != null) {
+            model.addAttribute("books", readingList);
+        }
+        return "readingList";
+    }
+
+    @RequestMapping(method = RequestMethod.POST)
+    public String addToReadingList(Book book) {
+        book.setReader(reader);
+        readingListRepository.save(book);
+        return "redirect:/readingList";
+    }
+
 }
