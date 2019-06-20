@@ -1,0 +1,10 @@
+server:
+  port: 8443
+logging:
+  path: D:/testlog/
+  file: BookWorm.log
+  level:
+    root: WARN
+    org:
+      springframework:
+        security: DEBUG

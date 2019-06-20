@@ -44,6 +44,11 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("com.h2database:h2")
     compile("org.springframework.boot:spring-boot-starter-security")
+    compile("org.springframework.boot:spring-boot-starter-log4j")
     // 单元测试用的jar包
     testCompile("org.springframework.boot:spring-boot-starter-test")
+}
+configurations {
+    all*.exclude group:'org.springframework.boot',
+            module:'spring-boot-starter-logging'
 }
